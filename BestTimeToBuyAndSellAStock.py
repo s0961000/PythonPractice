@@ -42,6 +42,7 @@ Three possible decisions:
 
 """
 # print(max_profit([2, 4, 1]))
+# print(max_profit([8, 3, 9, 2, 4])
 
 def max_profit(prices):
     # Buying and selling on same day (length of 1) profits 0. 0 length means 0
