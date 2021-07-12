@@ -53,7 +53,7 @@ def max_profit(prices):
     max_profit = 0
 
     for i in prices:
-        if(i < min_value):
+        if i < min_value:
             min_value = i
         else:
             if i - min_value > max_profit:
