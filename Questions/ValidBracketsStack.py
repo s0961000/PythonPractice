@@ -41,7 +41,7 @@ def valid_parentheses(value):
             if my_stack.pop() != brackets[i]:
                 return False
 
-    # Need to Check that Stack is empty
+    # Need to Check that Stack is empty; otherwise only added Opening Brackets
     if len(my_stack) != 0:
         return False
 
