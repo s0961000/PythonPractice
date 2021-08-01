@@ -22,9 +22,16 @@ def print_board(b):
 
 
 def get_input():
-    x = int(input("X: "))
-    y = int(input("Y: "))
-    # print(f"You selected: ({x},{y})")
+    x = 0
+    y = 0
+    valid_input = False
+    while not valid_input:
+        try:
+            x = int(input("X: "))
+            y = int(input("Y: "))
+            valid_input = True
+        except Exception as inst:
+            print("Invalid inputs. Please enter numbers")
     return x, y
 
 
@@ -36,12 +43,23 @@ def check_valid(x, y, board):
 
     # Check values on board
     if not (0 <= x < len(board[0]) and 0 <= y < len(board)):
+        print(f"Values {x}, {y} are out of bounds. Try again.")
         return False
     # Check values are empty
     if board[x][y] == "X" or board[x][y] == "O":
+        print(f"Values {x},{y} are already taken. Try again.")
         return False
     # Return True Otherwise
     return True
+
+
+def place_mark(player, board):
+    print(f"{player}'s turn")
+    x, y = get_input()
+    while not check_valid(x, y, board):
+        x, y = get_input()
+    board[x][y] = player
+    print_board(board)
 
 
 def check_winner(board):
@@ -79,25 +97,12 @@ def check_filled(board):
 if __name__ == "__main__":
     game_board = create_board()
     print_board(game_board)
-    # x, y = get_input()
-    # print(check_valid(0, 0, game_board))
-    # print(check_valid(1, 2, game_board))
-    # print(check_valid(0, 4, game_board))
-    # print(check_valid(5, 1, game_board))
     turn_count = 0
     while not check_winner(game_board) and not check_filled(game_board):
         if turn_count % 2 == 0:
-            print("X's turn")
-            x, y = get_input()
-            if check_valid(x, y, game_board):
-                game_board[x][y] = "X"
-                print_board(game_board)
+            place_mark("X", game_board)
         else:
-            print("O's turn")
-            x, y = get_input()
-            if check_valid(x, y, game_board):
-                game_board[x][y] = "O"
-                print_board(game_board)
+            place_mark("O", game_board)
         turn_count += 1
 
     # Check Winner
@@ -108,10 +113,8 @@ if __name__ == "__main__":
     else:
         "Something Happened"
 
-  #  exit()
+#  exit()
 
-
-  # Go again if spot is already taken
-  # Input Validation for spot choice (only accepts Ints right now)
-  # Build AI
-  # Pulling Down Other Project via Git
+# Fix Check Valid switch x and y
+# Build AI
+# Pulling Down Other Project via Git
