@@ -93,8 +93,7 @@ def check_filled(board):
                 return False
     return True
 
-
-if __name__ == "__main__":
+def start_two_player_game():
     game_board = create_board()
     print_board(game_board)
     turn_count = 0
@@ -113,6 +112,33 @@ if __name__ == "__main__":
     else:
         "Something Happened"
 
+if __name__ == "__main__":
+    ans = input("Hello please type the corresponding number for your preferred option:\n1). Two Player\n"
+                "2). Player vs AI\n3). Exit\n--> ")
+    if ans == "1":
+        start_two_player_game()
+    elif ans == "2":
+        print("Placeholder")
+    else:
+        print("Goodbye")
+
+    # game_board = create_board()
+    # print_board(game_board)
+    # turn_count = 0
+    # while not check_winner(game_board) and not check_filled(game_board):
+    #     if turn_count % 2 == 0:
+    #         place_mark("X", game_board)
+    #     else:
+    #         place_mark("O", game_board)
+    #     turn_count += 1
+    #
+    # # Check Winner
+    # if check_winner(game_board):
+    #     print(f"Game Winner: {check_winner(game_board)}")
+    # elif check_filled(game_board):
+    #     print("Game Tied")
+    # else:
+    #     "Something Happened"
 #  exit()
 
 # Fix Check Valid switch x and y
