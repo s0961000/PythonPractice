@@ -58,8 +58,25 @@ def find_pivot(input_array):
             return idx
 
 
+def find_pivot_2(input_array):
+    array_total = 0
+    left_sum = 0
+
+    # Get array total, used to calculate right side value
+    for i in input_array:
+        array_total += i
+
+    # Finding pivot
+    for idx, val in enumerate(input_array):
+        if left_sum == (array_total - left_sum - input_array[idx]):
+            return idx
+        else:
+            left_sum += val
+
+
 if __name__ == "__main__":
-    input_array = [2,1,-1]
+    input_array = [2, 7, 3, 4, 5]
     print(input_array)
     print(create_prefix_array(input_array))
     print(find_pivot(input_array))
+    print(find_pivot_2(input_array))
