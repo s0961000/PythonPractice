@@ -7,11 +7,11 @@ def is_ip(raw_ip):
     # check ip is legitimate
     try:
         # convert to IP Object
-        ip = ip_network(raw_ip)
-    except Exception as e:
+        ip_net = ip_network(raw_ip)
+    except ValueError as e:
         print(f"Error Converting {raw_ip} to IP Address.")
         exit()
-    return ip
+    return ip_net
 
 
 def is_important_ip(ip_obj):
@@ -21,8 +21,6 @@ def is_important_ip(ip_obj):
                 ip_net = is_ip(line.strip())
                 if ip_obj in ip_net:
                     return True
-                # if str(ip_obj) == line.strip():  # Must Strip to remove newline
-                #     return True
             return False
     except FileNotFoundError:
         print("Important IP File Not Found. Exiting.")
