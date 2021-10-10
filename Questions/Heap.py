@@ -68,11 +68,11 @@ Right = 2i + 1
     return heap.peek();
 
 """
-import heapq
+from heapq import heapify
 
 heap = [5, 7, 9, 4, 3]
 
-heapq.heapify(heap)
+heapify(heap)
 
 if __name__ == "__main__":
     print(heap)
