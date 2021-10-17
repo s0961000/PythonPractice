@@ -84,3 +84,6 @@ if __name__ == "__main__":
         output = add_ip(args.add)
         for value in output:
             print(value)
+        with open("output.txt", "w") as output_file:
+            for value in output:
+                output_file.write(f"{value}\n")
